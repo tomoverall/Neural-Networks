@@ -25,4 +25,5 @@ class Layer_Dense:
 
 class Activation_ReLU:
     def forward(self, inputs):
+        # here we are using the maximum function instead of a for-loop to create the ReLU
         self.output = np.maximum(0, inputs)
