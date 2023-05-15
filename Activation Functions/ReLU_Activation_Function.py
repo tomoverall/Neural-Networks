@@ -9,6 +9,12 @@ class Activation_ReLU:
     def forward(self, inputs):
         self.output = np.maximum(0, inputs)
 
+    def backward(self, dvalues):
+        # since we need to modify the original variable, lets make a copy of the values first
+        self.dinputs = dvalues.copy()
+        # zero gradient where input values were negative
+        self.dinputs[self.output <= 0] = 0
+
 
 X, y = spiral_data(samples=100, classes=3)
 
